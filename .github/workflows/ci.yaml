@@ -25,7 +25,9 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run Unit Tests
-        run: pytest
+        run: |
+          export PYTHONPATH=.
+          pytest
 
       - name: Log in to Docker Hub
         if: success()   # Only run if tests pass
