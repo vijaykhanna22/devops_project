@@ -1,30 +1,90 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Calculator App</title>
+    <meta charset="UTF-8">
+    <title>Interactive Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: Arial; text-align: center; margin-top: 80px; }
-        form { display: inline-block; padding: 20px; border: 1px solid #ccc; border-radius: 10px; }
-        input, select { margin: 5px; padding: 8px; }
-        button { padding: 8px 16px; }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+            margin: 0;
+        }
+        .calculator {
+            background: #ffffffcc;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 350px;
+            animation: fadeIn 1s ease;
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        input, select, button {
+            width: 100%;
+            margin: 8px 0;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            transition: all 0.3s ease;
+        }
+        input:focus, select:focus {
+            border-color: #66a6ff;
+            outline: none;
+            box-shadow: 0 0 8px rgba(102,166,255,0.4);
+        }
+        button {
+            background: #66a6ff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background: #89f7fe;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            padding: 12px;
+            border-radius: 10px;
+            background: #f0f0f0;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
-    <h2>Simple Calculator</h2>
-    <form method="POST">
-        <input type="number" name="num1" step="any" placeholder="Enter number 1" required>
-        <select name="operation">
-            <option value="add">+</option>
-            <option value="sub">−</option>
-            <option value="mul">×</option>
-            <option value="div">÷</option>
-        </select>
-        <input type="number" name="num2" step="any" placeholder="Enter number 2" required>
-        <button type="submit">Calculate</button>
-    </form>
+    <div class="calculator">
+        <h2>Interactive Calculator</h2>
+        <form method="POST">
+            <input type="number" name="num1" step="any" placeholder="Enter number 1" required>
+            <select name="operation">
+                <option value="add">+</option>
+                <option value="sub">−</option>
+                <option value="mul">×</option>
+                <option value="div">÷</option>
+            </select>
+            <input type="number" name="num2" step="any" placeholder="Enter number 2" required>
+            <button type="submit">Calculate</button>
+        </form>
 
-    {% if result is not none %}
-    <h3>Result: {{ result }}</h3>
-    {% endif %}
+        {% if result is not none %}
+        <div class="result">Result: {{ result }}</div>
+        {% endif %}
+    </div>
 </body>
 </html>
